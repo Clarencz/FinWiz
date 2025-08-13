@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout,QLabel,QMenuBar,QToolBar,QStatusBar,QTableWidget
+from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout,QLabel,QMenuBar,QToolBar,QStatusBar,QTabWidget
 from PySide6.QtCore import Qt
 from ui.trade_viewer import TradeViewer
 from ui.analysis_viewer import AnalysisViewer
@@ -19,10 +19,10 @@ class MainWindow (QMainWindow):
         self.setStyleSheet(DarkTheme.get_stylesheet())
         
         self._create_menu_bar()
-        # self._create_tool_bar()
-        # self._create_status_bar()
-        # self._create_central_widget()
-        # self._load_dummy_data()
+        self._create_tool_bar()
+        self._create_status_bar()
+        self._create_central_widget()
+        self._load_dummy_data()
         
     def _create_menu_bar(self):
         menu_bar = self.menuBar()
@@ -63,8 +63,13 @@ class MainWindow (QMainWindow):
         tool_bar.addSeparator()
         tool_bar.addAction("Run Terminal")
         
+    def _create_status_bar(self):
+        status_bar = QStatusBar()
+        self.setStatusBar(status_bar)
+        status_bar.showMessage("Ready")
+        
     def _create_central_widget(self):
-        self.tab_widget = QTableWidget()
+        self.tab_widget = QTabWidget()
         self.setCentralWidget(self.tab_widget)
         
         #Tabs
@@ -90,4 +95,12 @@ class MainWindow (QMainWindow):
         inv3 = Investment("I003", "Microsoft Corp.", "Stock", 255.00, 20, datetime(2023, 3, 20), 250.00)
         
     #     #create a dummy portfolio
-        my_portfolio = Portfolio("P001","My firs
+        my_portfolio = Portfolio("P001","My first portfolio")
+        my_portfolio.add_trade(trade1)
+        my_portfolio.add_trade(trade2)
+        my_portfolio.add_trade(trade3)
+        my_portfolio.add_investment(inv1)
+        my_portfolio.add_investment(inv2)
+        my_portfolio.add_investment(inv3)
+        
+        self.trade_analysis_tab.display_portfolio(my_portfolio)

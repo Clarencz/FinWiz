@@ -46,4 +46,53 @@ class DarkTheme:
             background-color:#3a3a3a;
             color:#f0f0f0;
         }
-        QTa
+        QTabWidget{
+            border: 1px solid #5a5a5a;
+            background-color: #2e2e2e;
+        }
+        QTabBar::tab{
+            background-color: #3a3a3a;
+            color:#f0f0f0;
+            padding:8px 20px;
+            border:1px solid #5a5a5a;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius:4px;
+        }
+        QTabBar::tab_selected{
+            background-color:#2e2e2e;
+            border-bottom-color:#2e2e2e;
+        }
+        QTabBar::tab:hover{
+            background-color: #5a5a5a;
+        }
+        QTextEdit, QLineEdit{
+            background-color:#3a3a3a;
+            color:#f0f0f0;
+            border:1px solid #5a5a5a;
+        }
+        QTableWidget{
+            background-color:#2e2e2e;
+            color:#f0f0f0;
+            gridline-color:#5a5a5a;
+            border: 1px solid #5a5a5a;
+        }
+        QHeaderView::section{
+            background-color:#3a3a3a;
+            color:#f0f0f0;
+            padding:5px;
+            border:1px solid #5a5a5a
+        }
+        QPushButton{
+            background-color:#5a5a5a;
+            color:#f0f0f0;
+            border:1px solid #7a7a7a;
+            padding: 8px 15px;
+            border-radius:4px;
+        }
+        QPushButton:hover{
+            background-color:#7a7a7a;
+        }
+        QLabel{
+            color:#f0f0f0;
+        }
+        '''

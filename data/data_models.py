@@ -41,3 +41,6 @@ class Portfolio:
     
     def total_value(self) -> float:
         return sum (inv.current_price * inv.quantity_held for inv in self.investments)
+    
+    def total_commission(self) -> float:
+        return sum(trade.commission for trade in self.trades)
