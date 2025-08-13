@@ -1,4 +1,5 @@
-# FINWIZ - Trade Analyzer
+# FinWiz  
+Your Financial Wizard Trade Analyzer
 
 ## Project Overview
 
@@ -50,8 +51,8 @@ The application will follow a modular architecture to ensure separation of conce
 `python main.py`
 
 ## How the inside looks
-<img src ="FinWiz\screenshots\home.png">
-<img src = "FinWiz\screenshots\analysis.png">
+<img src ="screenshots\home.png">
+<img src = "screenshots\analysis.png">
 
 
 ## Running the Application (Important Notes)
