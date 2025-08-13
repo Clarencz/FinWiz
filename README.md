@@ -51,8 +51,11 @@ The application will follow a modular architecture to ensure separation of conce
 `python main.py`
 
 ## How the inside looks
-<img src ="screenshots\home.png">
-<img src = "screenshots\analysis.png">
+<p float="left">
+  <img src="screenshots/home.png" alt="Home Screenshot" width="45%">
+  <img src="screenshots/analysis.png" alt="Analysis Screenshot" width="45%">
+</p>
+
 
 
 ## Running the Application (Important Notes)
