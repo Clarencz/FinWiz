@@ -3,7 +3,8 @@ Your Financial Wizard Trade Analyzer
 
 ## Project Overview
 
-This project aims to develop a comprehensive desktop application using PySide6 for analyzing trades, evaluating investment styles, and performing mathematical analyses. It will feature PDF and CSV import capabilities, and an integrated sandboxed Python terminal for interactive code execution.
+An open-source desktop application for live financial data analysis and custom quantitative research. Built with PySide6, it gives traders, quants, and data scientists a flexible toolkit for building, testing, and refining their strategies — without being locked into a single library or workflow.
+With real-time API connections, you can pull market data directly into the app and apply any mathematical technique you like from TA-Lib indicators “on steroids” to advanced statistical models and custom algorithms. It adapts to your workflow — making it as useful for academic exploration as for professional decision-making.
 
 ## Architecture Outline
 
@@ -67,7 +68,7 @@ Due to the nature of the sandbox environment, directly running the PySide6 appli
 1.  **Clone the repository:** (If you were to download this project)
     ```bash
     git clone <repository_url>
-    cd finwiz
+    cd FinWiz
     ```
 2.  **Create and activate a virtual environment:**
     ```bash
