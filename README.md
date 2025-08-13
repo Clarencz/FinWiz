@@ -1,4 +1,5 @@
-# Trade Analyzer
+# FinWiz  
+Your Financial Wizard Trade Analyzer
 
 ## Project Overview
 
@@ -9,32 +10,32 @@ This project aims to develop a comprehensive desktop application using PySide6 f
 The application will follow a modular architecture to ensure separation of concerns, maintainability, and extensibility. Key modules and their responsibilities are outlined below:
 
 ### 1. Core Application (`core/`)
-- **`main.py`**: Entry point of the application, initializes the QApplication and the main window.
-- **`main_window.py`**: Defines the main application window, including the layout, menu bar, toolbars, and central widget.
-- **`config.py`**: Handles application-wide configurations and settings.
+- Entry point of the application, initializes the QApplication and the main window.
+- Defines the main application window, including the layout, menu bar, toolbars, and central widget.
+- Handles application-wide configurations and settings.
 
 ### 2. Data Management (`data/`)
-- **`data_models.py`**: Defines data structures for trades, investments, and other relevant financial data.
-- **`pdf_parser.py`**: Module for parsing and extracting data from PDF documents.
-- **`csv_importer.py`**: Module for importing and processing data from CSV files.
+- Defines data structures for trades, investments, and other relevant financial data.
+- Module for parsing and extracting data from PDF documents.
+- Module for importing and processing data from CSV files.
 
 ### 3. Analysis Modules (`analysis/`)
-- **`trade_evaluator.py`**: Contains logic for evaluating individual trades and portfolios.
-- **`investment_styles.py`**: Implements algorithms and methodologies for analyzing different investment styles.
-- **`math_tools.py`**: Provides mathematical and statistical functions for financial analysis (e.g., risk metrics, performance indicators).
+- Contains logic for evaluating individual trades and portfolios.
+- Implements algorithms and methodologies for analyzing different investment styles.
+- Provides mathematical and statistical functions for financial analysis (e.g., risk metrics, performance indicators).
 
 ### 4. User Interface (`ui/`)
-- **`widgets.py`**: Custom PySide6 widgets used throughout the application.
-- **`styles.py`**: Manages application styling, themes (e.g., dark mode), and UI/UX elements.
-- **`dialogs.py`**: Defines various dialogs for user interaction (e.g., file open dialogs, settings dialogs).
+- Custom PySide6 widgets used throughout the application.
+- Manages application styling, themes (e.g., dark mode), and UI/UX elements.
+- Defines various dialogs for user interaction (e.g., file open dialogs, settings dialogs).
 
 ### 5. Terminal (`terminal/`)
-- **`python_terminal.py`**: Implements the interactive Python terminal interface.
-- **`sandbox_executor.py`**: Handles the sandboxed execution of Python code to ensure security and stability.
+- Implements the interactive Python terminal interface.
+- Handles the sandboxed execution of Python code to ensure security and stability.
 
 ### 6. Utilities (`utils/`)
-- **`helpers.py`**: General utility functions.
-- **`logger.py`**: Centralized logging utility.
+- General utility functions.
+- Centralized logging utility.
 
 ## Development Environment Setup
 
@@ -49,6 +50,11 @@ The application will follow a modular architecture to ensure separation of conce
 
 `python main.py`
 
+## How the inside looks
+<p float="left">
+  <img src="screenshots/home.png" alt="Home Screenshot" width="45%">
+  <img src="screenshots/analysis.png" alt="Analysis Screenshot" width="45%">
+</p>
 
 
 
@@ -61,7 +67,7 @@ Due to the nature of the sandbox environment, directly running the PySide6 appli
 1.  **Clone the repository:** (If you were to download this project)
     ```bash
     git clone <repository_url>
-    cd trade_analyzer
+    cd finwiz
     ```
 2.  **Create and activate a virtual environment:**
     ```bash
