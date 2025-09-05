@@ -1,4 +1,4 @@
-# QuantApp: A Text-Based Terminal Quant Application
+# FinancialWizard: A Text-Based Terminal Quant Application
 
 ## Table of Contents
 
@@ -21,13 +21,13 @@
 
 ## 1. Introduction
 
-QuantApp is a comprehensive text-based terminal application built in Python, designed for quantitative analysis, market data exploration, and trading simulation. It provides a command-line interface (CLI) for users to interact with various financial data sources, perform technical and statistical analysis, visualize data in the terminal, and simulate trading strategies.
+FinancialWizard is a comprehensive text-based terminal application built in Python, designed for quantitative analysis, market data exploration, and trading simulation. It provides a command-line interface (CLI) for users to interact with various financial data sources, perform technical and statistical analysis, visualize data in the terminal, and simulate trading strategies.
 
 This application aims to provide a lightweight yet powerful tool for financial enthusiasts, students, and professionals who prefer a terminal-centric workflow for their quantitative tasks.
 
 ## 2. Features
 
-QuantApp offers a wide range of features, categorized into the following modules:
+FinancialWizard offers a wide range of features, categorized into the following modules:
 
 - **Core App Structure**: CLI-based navigation, modular design, command auto-completion & history, configurable settings.
 - **Data Import & Management**: Manual file imports (CSV, Excel, JSON), API imports (Yahoo Finance, Alpha Vantage, Polygon.io, Tiingo, FRED, CoinGecko), database integration (SQLite/PostgreSQL), live streaming mode.
@@ -41,12 +41,12 @@ QuantApp offers a wide range of features, categorized into the following modules
 
 ## 3. Installation
 
-To install QuantApp, follow these steps: ensure you have microsoft build tools(msvc) installed in your windows system to procede:
+To install QuantApp, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/quantapp.git
-    cd quantapp
+    git clone https://github.com/your-username/FinancialWizard.git
+    cd FinancialWizard
     ```
 2.  **Create a virtual environment (recommended):**
     ```bash
@@ -61,7 +61,7 @@ To install QuantApp, follow these steps: ensure you have microsoft build tools(m
 
 ## 4. Usage
 
-To start the QuantApp, run the `main.py` script from your terminal:
+To start the FinancialWizard, run the `main.py` script from your terminal:
 
 ```bash
 python3 main.py
@@ -87,15 +87,15 @@ API keys and other settings can be configured using the `config` commands. For e
 
 ## 5. Modules Overview
 
-This section provides a detailed overview of the different modules within QuantApp.
+This section provides a detailed overview of the different modules within FinancialWizard.
 
 ### Core App Structure
 
-The core of QuantApp is built around a `click`-based CLI, providing a robust and extensible command-line interface. It supports nested commands, auto-completion (via `prompt_toolkit`), and command history. The application is designed with modularity in mind, allowing for easy expansion and maintenance of different financial domains.
+The core of FinancialWizard is built around a `click`-based CLI, providing a robust and extensible command-line interface. It supports nested commands, auto-completion (via `prompt_toolkit`), and command history. The application is designed with modularity in mind, allowing for easy expansion and maintenance of different financial domains.
 
 ### Data Import & Management
 
-QuantApp handles data through `DataManager`, `APIManager`, and `DBManager`.
+FinancialWizard handles data through `DataManager`, `APIManager`, and `DBManager`.
 
 - **Manual File Imports**: Supports loading data from CSV, Excel, and JSON files for backtesting or custom analysis.
 - **API Imports**: Integrates with various financial APIs to fetch live and historical data:
@@ -144,7 +144,7 @@ The `trading_simulator.py` module enables simulated trading activities:
 
 ### Reporting & Export
 
-QuantApp provides robust reporting capabilities through `reporting.py`:
+FinancialWizard provides robust reporting capabilities through `reporting.py`:
 
 - **Export to CSV/Excel**: Easily export dataframes to common spreadsheet formats.
 - **PDF Reports**: Generate professional PDF reports with performance charts and key metrics using `fpdf2`.
