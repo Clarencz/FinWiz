@@ -1,10 +1,10 @@
-# QuantApp Documentation
+# FinancialWizard Documentation
 
-This document provides detailed technical documentation for the QuantApp project, covering its architecture, module functionalities, and implementation details.
+This document provides detailed technical documentation for the FinancialWizard project, covering its architecture, module functionalities, and implementation details.
 
 ## 1. Architecture Overview
 
-QuantApp follows a modular architecture, separating concerns into distinct Python modules. This design promotes maintainability, scalability, and ease of development. The core application (`main.py`) acts as the central orchestrator, dispatching commands to specialized modules based on user input.
+FinancialWizard follows a modular architecture, separating concerns into distinct Python modules. This design promotes maintainability, scalability, and ease of development. The core application (`main.py`) acts as the central orchestrator, dispatching commands to specialized modules based on user input.
 
 ### Key Architectural Principles:
 
@@ -206,9 +206,9 @@ Refer to the `README.md` file for detailed installation instructions and depende
 
 Refer to the `README.md` file for basic usage and a list of core commands.
 
-## 5. Extending QuantApp
+## 5. Extending FinancialWizard
 
-Due to its modular design, extending QuantApp is straightforward:
+Due to its modular design, extending FinancialWizard is straightforward:
 
 - **Adding New Data Sources**: Create a new method in `api_manager.py` or a new dedicated data module (e.g., `etf_data.py`) to fetch data from a new API. Integrate it into `main.py` as a new command.
 - **Implementing New Indicators/Analytics**: Add new functions to `analytics.py` to implement new technical indicators or statistical models. Ensure they operate on pandas DataFrames for compatibility.

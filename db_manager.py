@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 class DBManager:
-    def __init__(self, db_path="quant_app.db"):
+    def __init__(self, db_path="new_session.db"):
         self.db_path = db_path
         self.conn = None
 

@@ -103,7 +103,7 @@ def show_welcome():
     console.print(Panel.fit(
         "[bold blue]Welcome to Quant Terminal[/bold blue]\n"
         "A comprehensive financial analysis and trading platform",
-        title="[bold green]Quant App[/bold green]"
+        title="[bold green]Financial Wizard[/bold green]"
     ))
     
     table = Table(title="Available Commands")
@@ -196,7 +196,7 @@ def chart(ctx):
         console.print("[green]Displaying stock chart...[/green]")
         ctx.obj["CHARTING"].plot_candlestick_chart(current_stock_data, title=f"{current_stock_data.index.name} Candlestick Chart")
     else:
-        console.print("[yellow]No stock data loaded to chart. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded to chart. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @cli.group()
 def crypto():
@@ -275,7 +275,7 @@ def fred(ctx, series_id, start_date, end_date):
     """Get data for a FRED series ID."""
     api_key = ctx.obj["CONFIG_MANAGER"].get("fred_api_key")
     if not api_key:
-        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use (‘config set fred_api_key YOUR_KEY’).")
+        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use ('config set fred_api_key YOUR_KEY').")
         return
     console.print(f"[green]Fetching FRED series {series_id.upper()}...[/green]")
     ctx.obj["MACRO_DATA"].get_fred_series(series_id, api_key, start_date, end_date)
@@ -288,8 +288,8 @@ def inflation(ctx, start_date, end_date):
     """Get US inflation rate."""
     api_key = ctx.obj["CONFIG_MANAGER"].get("fred_api_key")
     if not api_key:
-        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use (‘config set fred_api_key YOUR_KEY’).\n        return
-    ctx.obj["MACRO_DATA"].get_inflation_rate(api_key, start_date, end_date)
+        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use ('config set fred_api_key YOUR_KEY').")
+    return ctx.obj["MACRO_DATA"].get_inflation_rate(api_key, start_date, end_date)
 
 @macro.command()
 @click.option("--start_date", help="Start date (YYYY-MM-DD).")
@@ -299,8 +299,8 @@ def gdp(ctx, start_date, end_date):
     """Get US GDP."""
     api_key = ctx.obj["CONFIG_MANAGER"].get("fred_api_key")
     if not api_key:
-        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use (‘config set fred_api_key YOUR_KEY’).\n        return
-    ctx.obj["MACRO_DATA"].get_gdp(api_key, start_date, end_date)
+        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use ('config set fred_api_key YOUR_KEY').")
+    return ctx.obj["MACRO_DATA"].get_gdp(api_key, start_date, end_date)
 
 @macro.command()
 @click.option("--start_date", help="Start date (YYYY-MM-DD).")
@@ -310,8 +310,8 @@ def interest_rates(ctx, start_date, end_date):
     """Get Federal Funds Rate."""
     api_key = ctx.obj["CONFIG_MANAGER"].get("fred_api_key")
     if not api_key:
-        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use (‘config set fred_api_key YOUR_KEY’).\n        return
-    ctx.obj["MACRO_DATA"].get_interest_rates(api_key, start_date, end_date)
+        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use ('config set fred_api_key YOUR_KEY').")      
+    return ctx.obj["MACRO_DATA"].get_interest_rates(api_key, start_date, end_date)
 
 @macro.command()
 @click.option("--start_date", help="Start date (YYYY-MM-DD).")
@@ -321,8 +321,8 @@ def unemployment(ctx, start_date, end_date):
     """Get US Unemployment Rate."""
     api_key = ctx.obj["CONFIG_MANAGER"].get("fred_api_key")
     if not api_key:
-        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use (‘config set fred_api_key YOUR_KEY’).\n        return
-    ctx.obj["MACRO_DATA"].get_unemployment_rate(api_key, start_date, end_date)
+        console.print("[bold red]Error:[/bold red] FRED API key not configured. Use ('config set fred_api_key YOUR_KEY').")       
+    return ctx.obj["MACRO_DATA"].get_unemployment_rate(api_key, start_date, end_date)
 
 @cli.group()
 def portfolio():
@@ -355,9 +355,9 @@ def sharpe(ctx, returns_column, risk_free_rate):
         if returns_column in current_stock_data.columns:
             ctx.obj["PORTFOLIO_MANAGER"].calculate_sharpe_ratio(current_stock_data[returns_column], risk_free_rate)
         else:
-            console.print(f"[bold red]Error:[/bold red] Returns column (‘{returns_column}’) not found in loaded data.")
+            console.print(f"[bold red]Error:[/bold red] Returns column ('{returns_column}') not found in loaded data.")
     else:
-        console.print("[yellow]No data loaded for Sharpe Ratio calculation. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No data loaded for Sharpe Ratio calculation. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @portfolio.command()
 @click.argument("returns_column")
@@ -370,9 +370,9 @@ def sortino(ctx, returns_column, risk_free_rate):
         if returns_column in current_stock_data.columns:
             ctx.obj["PORTFOLIO_MANAGER"].calculate_sortino_ratio(current_stock_data[returns_column], risk_free_rate)
         else:
-            console.print(f"[bold red]Error:[/bold red] Returns column (‘{returns_column}’) not found in loaded data.")
+            console.print(f"[bold red]Error:[/bold red] Returns column ('{returns_column}') not found in loaded data.")
     else:
-        console.print("[yellow]No data loaded for Sortino Ratio calculation. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No data loaded for Sortino Ratio calculation. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @portfolio.command()
 @click.argument("stock_returns_column")
@@ -387,7 +387,7 @@ def beta(ctx, stock_returns_column, market_returns_column):
         else:
             console.print(f"[bold red]Error:[/bold red] One or both returns columns not found in loaded data.")
     else:
-        console.print("[yellow]No data loaded for Beta calculation. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No data loaded for Beta calculation. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @portfolio.command()
 @click.pass_context
@@ -396,11 +396,11 @@ def backtest(ctx):
     global current_stock_data
     if current_stock_data is not None and not current_stock_data.empty:
         console.print("[green]Running backtest...[/green]")
-        cumulative_returns = ctx.obj["PORTFOLIO_MANAGER"].run_backtest(current_stock_data.copy(), None) # None for strategy_func as it’s hardcoded for now
+        cumulative_returns = ctx.obj["PORTFOLIO_MANAGER"].run_backtest(current_stock_data.copy(), None) # None for strategy_func as it's hardcoded for now
         if cumulative_returns is not None:
             ctx.obj["CHARTING"].plot_line_chart(cumulative_returns, title="Equity Curve", x_label="Time", y_label="Cumulative Returns")
     else:
-        console.print("[yellow]No stock data loaded for backtesting. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded for backtesting. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @cli.group()
 def config():
@@ -436,7 +436,7 @@ def alias(ctx, alias, command):
     """Set a command alias."""
     ctx.obj["CONFIG_MANAGER"].set_alias(alias, " ".join(command))
 
-@config.command(name=\"list_aliases\")
+@config.command(name="list_aliases")
 @click.pass_context
 def list_aliases(ctx):
     """List all configured aliases."""
@@ -461,8 +461,8 @@ def import_data():
     """Commands for importing data from files."""
     pass
 
-@import_data.command(name=‘csv’)
-@click.argument(‘file_path’)
+@import_data.command(name='csv')
+@click.argument('file_path')
 @click.pass_context
 def import_csv(ctx, file_path):
     """Import data from a CSV file."""
@@ -475,9 +475,9 @@ def import_csv(ctx, file_path):
     except Exception as e:
         console.print(f"[bold red]An error occurred:[/bold red] {e}")
 
-@import_data.command(name=‘excel’)
-@click.argument(‘file_path’)
-@click.option(‘--sheet’, default=0, help=‘Sheet name or index to load from Excel file.’)
+@import_data.command(name='excel')
+@click.argument('file_path')
+@click.option('--sheet', default=0, help='Sheet name or index to load from Excel file.')
 @click.pass_context
 def import_excel(ctx, file_path, sheet):
     """Import data from an Excel file."""
@@ -490,8 +490,8 @@ def import_excel(ctx, file_path, sheet):
     except Exception as e:
         console.print(f"[bold red]An error occurred:[/bold red] {e}")
 
-@import_data.command(name=‘json’)
-@click.argument(‘file_path’)
+@import_data.command(name='json')
+@click.argument('file_path')
 @click.pass_context
 def import_json(ctx, file_path):
     """Import data from a JSON file."""
@@ -510,7 +510,7 @@ def db():
     pass
 
 @db.command()
-@click.argument(‘table_name’)
+@click.argument('table_name')
 @click.pass_context
 def save(ctx, table_name):
     """Save the currently loaded stock data to the database."""
@@ -518,14 +518,14 @@ def save(ctx, table_name):
     if current_stock_data is not None:
         try:
             ctx.obj["DB_MANAGER"].save_dataframe(current_stock_data, table_name)
-            console.print(f"[green]Successfully saved data to table (‘{table_name}’).[/green]")
+            console.print(f"[green]Successfully saved data to table ('{table_name}').[/green]")
         except Exception as e:
             console.print(f"[bold red]Error saving to DB:[/bold red] {e}")
     else:
-        console.print("[yellow]No stock data loaded to save. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded to save. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @db.command()
-@click.argument(‘table_name’)
+@click.argument('table_name')
 @click.pass_context
 def load(ctx, table_name):
     """Load data from a database table."""
@@ -534,14 +534,14 @@ def load(ctx, table_name):
         df = ctx.obj["DB_MANAGER"].load_dataframe(table_name)
         if df is not None:
             current_stock_data = df
-            console.print(f"[green]Successfully loaded data from table (‘{table_name}’). Shape: {df.shape}[/green]")
+            console.print(f"[green]Successfully loaded data from table ('{table_name}'). Shape: {df.shape}[/green]")
             console.print(df.head())
         else:
-            console.print(f"[yellow]Table (‘{table_name}’) not found or empty.[/yellow]")
+            console.print(f"[yellow]Table ('{table_name}') not found or empty.[/yellow]")
     except Exception as e:
         console.print(f"[bold red]Error loading from DB:[/bold red] {e}")
 
-@db.command(name=‘list’)
+@db.command(name='list')
 @click.pass_context
 def list_tables(ctx):
     """List all tables in the database."""
@@ -572,7 +572,7 @@ def ta(ctx):
         if df_with_ta is not None:
             ctx.obj["ANALYTICS"].display_technical_indicators(df_with_ta)
     else:
-        console.print("[yellow]No stock data loaded for technical analysis. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded for technical analysis. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @analyze.command()
 @click.option("--columns", multiple=True, help="Columns to calculate correlations for (e.g., --columns Open --columns Close).")
@@ -584,7 +584,7 @@ def correlation(ctx, columns):
         console.print("[green]Calculating correlations...[/green]")
         ctx.obj["ANALYTICS"].calculate_correlations(current_stock_data, list(columns) if columns else None)
     else:
-        console.print("[yellow]No stock data loaded for correlation analysis. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded for correlation analysis. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @analyze.command()
 @click.option("--column", default="Close", help="Column to calculate volatility for.")
@@ -597,7 +597,7 @@ def volatility(ctx, column, window):
         console.print("[green]Calculating volatility...[/green]")
         ctx.obj["ANALYTICS"].calculate_volatility(current_stock_data, column, window)
     else:
-        console.print("[yellow]No stock data loaded for volatility analysis. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded for volatility analysis. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @analyze.command()
 @click.argument("dependent_var")
@@ -613,7 +613,7 @@ def regression(ctx, dependent_var, independent_vars):
         console.print("[green]Performing regression analysis...[/green]")
         ctx.obj["ANALYTICS"].perform_regression_analysis(current_stock_data, dependent_var, list(independent_vars))
     else:
-        console.print("[yellow]No stock data loaded for regression analysis. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded for regression analysis. Use ('stocks load <TICKER>') first.[/yellow]")
 
 @cli.group()
 def trade():
@@ -638,19 +638,19 @@ def sell(ctx, symbol, quantity, price):
     """Simulate a sell order."""
     ctx.obj["TRADING_SIMULATOR"].sell(symbol, quantity, price)
 
-@trade.command(name=‘balance’)
+@trade.command(name='balance')
 @click.pass_context
 def view_balance(ctx):
     """View current cash balance."""
     ctx.obj["TRADING_SIMULATOR"].view_balance()
 
-@trade.command(name=‘positions’)
+@trade.command(name='positions')
 @click.pass_context
 def view_positions(ctx):
     """View current open positions."""
     ctx.obj["TRADING_SIMULATOR"].view_positions()
 
-@trade.command(name=‘history’)
+@trade.command(name='history')
 @click.pass_context
 def view_trade_history(ctx):
     """View trade history."""
@@ -679,8 +679,8 @@ def report():
     """Reporting and export features."""
     pass
 
-@report.command(name=‘csv’)
-@click.argument(‘filename’)
+@report.command(name='csv')
+@click.argument('filename')
 @click.pass_context
 def export_csv(ctx, filename):
     """Export currently loaded stock data to a CSV file."""
@@ -688,10 +688,10 @@ def export_csv(ctx, filename):
     if current_stock_data is not None and not current_stock_data.empty:
         ctx.obj["REPORTING"].export_dataframe_to_csv(current_stock_data, filename)
     else:
-        console.print("[yellow]No stock data loaded to export. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded to export. Use ('stocks load <TICKER>') first.[/yellow]")
 
-@report.command(name=‘excel’)
-@click.argument(‘filename’)
+@report.command(name='excel')
+@click.argument('filename')
 @click.pass_context
 def export_excel(ctx, filename):
     """Export currently loaded stock data to an Excel file."""
@@ -699,11 +699,11 @@ def export_excel(ctx, filename):
     if current_stock_data is not None and not current_stock_data.empty:
         ctx.obj["REPORTING"].export_dataframe_to_excel(current_stock_data, filename)
     else:
-        console.print("[yellow]No stock data loaded to export. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded to export. Use ('stocks load <TICKER>') first.[/yellow]")
 
-@report.command(name=‘pdf’)
-@click.argument(‘filename’)
-@click.option(‘--title’, default=‘Quant Report’, help=‘Title of the PDF report.’)
+@report.command(name='pdf')
+@click.argument('filename')
+@click.option('--title', default='Quant Report', help='Title of the PDF report.')
 @click.pass_context
 def generate_pdf(ctx, filename, title):
     """Generate a PDF report from loaded stock data."""
@@ -715,20 +715,20 @@ def generate_pdf(ctx, filename, title):
         }
         ctx.obj["REPORTING"].generate_pdf_report(title, content, filename)
     else:
-        console.print("[yellow]No stock data loaded for PDF report. Use (‘stocks load <TICKER>’) first.[/yellow]")
+        console.print("[yellow]No stock data loaded for PDF report. Use ('stocks load <TICKER>') first.[/yellow]")
 
-@report.command(name=‘email’)
-@click.argument(‘recipient’)
-@click.argument(‘subject’)
-@click.argument(‘body’)
+@report.command(name='email')
+@click.argument('recipient')
+@click.argument('subject')
+@click.argument('body')
 @click.pass_context
 def send_email(ctx, recipient, subject, body):
     """Send an email alert."""
     ctx.obj["REPORTING"].send_email_alert(recipient, subject, body)
 
-@report.command(name=‘notify’)
-@click.argument(‘message’)
-@click.option(‘--style’, default=‘green’, help=‘Style for the notification (e.g., green, red, yellow).’)
+@report.command(name='notify')
+@click.argument('message')
+@click.option('--style', default='green', help='Style for the notification (e.g., green, red, yellow).')
 @click.pass_context
 def send_notification(ctx, message, style):
     """Send a terminal notification."""
@@ -801,16 +801,16 @@ def disable_sandbox(ctx):
     """Disable sandbox mode (placeholder)."""
     ctx.obj["SECURITY_MANAGER"].disable_sandbox_mode()
 
-if __name__ == ‘__main__’:
+if __name__ == '__main__':
     while True:
         try:
-            text = session.prompt(‘quant> ’, completer=command_completer)
+            text = session.prompt('FinancialWizard> ', completer=command_completer)
             # Check for aliases before processing
             alias_command = config_manager.get_alias(text.split()[0])
             if alias_command:
                 text = alias_command + " " + " ".join(text.split()[1:])
 
-            if text.lower() == ‘exit’:
+            if text.lower() == 'exit':
                 break
             
             args = text.split()

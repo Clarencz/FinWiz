@@ -41,7 +41,7 @@ QuantApp offers a wide range of features, categorized into the following modules
 
 ## 3. Installation
 
-To install QuantApp, follow these steps:
+To install QuantApp, follow these steps: ensure you have microsoft build tools(msvc) installed in your windows system to procede:
 
 1.  **Clone the repository:**
     ```bash
