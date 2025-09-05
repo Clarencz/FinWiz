@@ -1,1 +1,5 @@
 .mvenv/
+*.db
+__pycache__/
+*.pyc
+todo.md
